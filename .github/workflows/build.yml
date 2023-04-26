@@ -40,23 +40,22 @@ jobs:
         workload_identity_provider: 'projects/951691090763/locations/global/workloadIdentityPools/techwings-blogging/providers/github'
         service_account: 'techwings-blogging@blogging-384618.iam.gserviceaccount.com'
 
+    - name: set-default-region
+      run: gcloud config set compute/region europe-west2
+
     - id: deploys-image-to-gcr
       uses: RafikFarhad/push-to-gcr-github-action@v5-beta
       with:
         registry: gcr.io
-        project_id: blogging
+        project_id: blogging-384618
         image_name: blogging/angular-cloudrun-devops
         image_tag: latest
-
-
-    - name: set-default-region
-      run: gcloud config set compute/region europe-west2
 
     - id: 'deploy'
       uses: 'google-github-actions/deploy-cloudrun@v1'
       with:
         service: 'angular-cloudrun-devops'
-        image: 'blogging/angular-cloudrun-devops'
+        image: 'gcr.io/blogging-384618/blogging/angular-cloudrun-devops:latest'
 
     - name: 'Use output'
       run: 'curl "${{ steps.deploy.outputs.url }}"'
