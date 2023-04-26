@@ -40,6 +40,14 @@ jobs:
         workload_identity_provider: 'projects/951691090763/locations/global/workloadIdentityPools/techwings-blogging/providers/github'
         service_account: 'techwings-blogging@blogging-384618.iam.gserviceaccount.com'
 
+    - id: deploys-image-to-gcr
+      uses: RafikFarhad/push-to-gcr-github-action@v5-beta
+      with:
+        registry: gcr.io
+        project_id: blogging-384618
+        image_name: blogging/angular-cloudrun-devops
+        image_tag: latest
+
     - id: 'deploy'
       uses: 'google-github-actions/deploy-cloudrun@v1'
       with:
