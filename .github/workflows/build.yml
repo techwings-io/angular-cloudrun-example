@@ -25,14 +25,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Builds code and run tests
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
     - run: npm run test:prod
-    - run: docker build . --file Dockerfile --tag gcr.io/orl-angular/orl-angular
 
     - uses: actions/checkout@v3
     - name: Authenticate to Google Cloud
