@@ -48,9 +48,9 @@ jobs:
         image_name: blogging/angular-cloudrun-devops
         image_tag: latest
 
-    - id: Setup default region
-    - steps:
-    - run: gcloud config set compute/region europe-west2
+
+    - name: set-default-region
+      run: gcloud config set compute/region europe-west2
 
     - id: 'deploy'
       uses: 'google-github-actions/deploy-cloudrun@v1'
