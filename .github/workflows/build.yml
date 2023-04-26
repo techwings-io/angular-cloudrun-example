@@ -37,7 +37,7 @@ jobs:
 
     - uses: 'google-github-actions/auth@v1'
       with:
-        workload_identity_provider: '//iam.googleapis.com/projects/951691090763/locations/global/workloadIdentityPools/techwings-blogging/providers/github'
+        workload_identity_provider: 'projects/951691090763/locations/global/workloadIdentityPools/techwings-blogging/providers/github'
         service_account: 'techwings-blogging@blogging-384618.iam.gserviceaccount.com'
 
     - id: 'deploy'
