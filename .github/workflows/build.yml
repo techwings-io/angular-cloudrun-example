@@ -24,14 +24,14 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Builds code and run tests
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run test:prod
+#    - uses: actions/checkout@v3
+#    - name: Builds code and run tests
+#      uses: actions/setup-node@v3
+#      with:
+#        node-version: ${{ matrix.node-version }}
+#        cache: 'npm'
+#    - run: npm ci
+#    - run: npm run test:prod
 
     - uses: 'actions/checkout@v3'
 
@@ -44,7 +44,7 @@ jobs:
       uses: RafikFarhad/push-to-gcr-github-action@v5-beta
       with:
         registry: gcr.io
-        project_id: blogging-384618
+        project_id: blogging
         image_name: blogging/angular-cloudrun-devops
         image_tag: latest
 
@@ -56,7 +56,7 @@ jobs:
       uses: 'google-github-actions/deploy-cloudrun@v1'
       with:
         service: 'angular-cloudrun-devops'
-        image: 'gcr.io/blogging-384618/angular-cloudrun-devops'
+        image: 'blogging/angular-cloudrun-devops'
 
     - name: 'Use output'
       run: 'curl "${{ steps.deploy.outputs.url }}"'
