@@ -48,11 +48,15 @@ jobs:
         image_name: blogging/angular-cloudrun-devops
         image_tag: latest
 
+    - id: Setup default region
+    - steps:
+    - run: gcloud config set compute/region europe-west2
+
     - id: 'deploy'
       uses: 'google-github-actions/deploy-cloudrun@v1'
       with:
         service: 'angular-cloudrun-devops'
-        image: 'gcr.io/blogging/angular-cloudrun-devops'
+        image: 'gcr.io/blogging/angular-cloudrun-devops:latest'
 
     - name: 'Use output'
       run: 'curl "${{ steps.deploy.outputs.url }}"'
