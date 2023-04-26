@@ -31,6 +31,9 @@ jobs:
     - run: docker build . --file Dockerfile --tag gcr.io/orl-angular/orl-angular
 
   deploy:
+
+    runs-on: ubuntu-latest
+
     permissions:
       contents: 'read'
       id-token: 'write'
