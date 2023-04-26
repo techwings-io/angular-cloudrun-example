@@ -37,8 +37,8 @@ jobs:
 
     - uses: 'google-github-actions/auth@v1'
       with:
-        workload_identity_provider: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
-        service_account: 'my-service-account@my-project.iam.gserviceaccount.com'
+        workload_identity_provider: 'https://iam.googleapis.com/projects/951691090763/locations/global/workloadIdentityPools/techwings-blogging/providers/github'
+        service_account: 'techwings-blogging@blogging-384618.iam.gserviceaccount.com'
 
     - id: 'deploy'
       uses: 'google-github-actions/deploy-cloudrun@v1'
