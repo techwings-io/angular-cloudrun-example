@@ -52,6 +52,7 @@ jobs:
       uses: 'google-github-actions/deploy-cloudrun@v1'
       with:
         service: 'angular-cloudrun-devops'
+        region: 'europe-west2'
         image: 'gcr.io/blogging-384618/blogging/angular-cloudrun-devops:latest'
 
     - name: 'Use output'
