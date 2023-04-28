@@ -45,7 +45,7 @@ jobs:
       with:
         registry: gcr.io
         project_id: blogging-384618
-        image_name: blogging/angular-cloudrun-devops
+        image_name: angular-cloudrun-devops
         image_tag: latest
 
     - id: 'deploy'
@@ -53,7 +53,7 @@ jobs:
       with:
         service: 'angular-cloudrun-devops'
         region: 'europe-west2'
-        image: 'gcr.io/blogging-384618/blogging/angular-cloudrun-devops:latest'
+        image: 'eu.gcr.io/blogging-384618/angular-cloudrun-devops:latest'
 
     - name: 'Use output'
       run: 'curl "${{ steps.deploy.outputs.url }}"'
