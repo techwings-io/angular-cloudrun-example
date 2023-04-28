@@ -37,7 +37,7 @@ jobs:
 
     - uses: 'google-github-actions/auth@v1'
       with:
-        workload_identity_provider: 'projects/951691090763/locations/eu-west2/workloadIdentityPools/techwings-blogging/providers/github'
+        workload_identity_provider: 'projects/951691090763/locations/global/workloadIdentityPools/techwings-blogging/providers/github'
         service_account: 'techwings-blogging@blogging-384618.iam.gserviceaccount.com'
 
     - id: deploys-image-to-gcr
@@ -52,7 +52,6 @@ jobs:
       uses: 'google-github-actions/deploy-cloudrun@v1'
       with:
         service: 'angular-cloudrun-devops'
-        region: 'eu-west2'
         image: 'gcr.io/blogging-384618/blogging/angular-cloudrun-devops:latest'
 
     - name: 'Use output'
